@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ESP32 LED Control</title>
+</head>
+<body>
+
+<h2>LED Control</h2>
+
+<button onclick="setLED('ON')">Turn ON</button>
+<button onclick="setLED('OFF')">Turn OFF</button>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase.js"></script>
+
+<script>
+var firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  databaseURL: "YOUR_DATABASE_URL"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+function setLED(state){
+  firebase.database().ref("LED_Status").set(state);
+}
+</script>
+
+</body>
+</html>
